@@ -4,11 +4,15 @@
 
 let yutsun=[];
 let yutsunataca=[];
-let yutsun1;
+let secuaces=[];
+let secuacesataca = [];
+let juego;
 let fondo;
+let vidasjugador=[];
+
 function setup() {
   createCanvas(800, 400);
-  yutsun1 = new jugador();
+  juego = new principal();
 }
 
 function preload() {
@@ -18,13 +22,20 @@ function preload() {
   for (let i=0; i<6; i++) {
     yutsunataca[i] = loadImage("data/golpe"+i+".png");
   }
+  for (let i=0; i<9; i++) {
+    secuaces[i] = loadImage("data/secuaz"+i+".png");
+  }
+  for (let i=0; i<9; i++) {
+    secuacesataca[i] = loadImage("data/ataque"+i+".png");
+  }
+  for (let i=0; i<6; i++) {
+    vidasjugador[i] = loadImage("data/vidas" +i+ ".png");
+  }
+
   fondo=loadImage("data/fondo.png");
 }
-
 function draw() {
   background(60);
-  image(fondo, 0, 0, 800, 400, 0, 0, 800, 400);//los ultimos 6 parametros son para delimitar lo q se ve de la imagen
-  yutsun1.mover();
-  yutsun1.atacar();
-  yutsun1.mostrar();
+  juego.dibujar();
+  juego.detectarcolision();
 }
